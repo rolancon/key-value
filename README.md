@@ -26,7 +26,7 @@ A pair contains of left-hand side term and a right-hand side term, connected wit
 
     left-term = right-term
 
-As explained in the intro, any number of spaces might appear around terms and operators like_=_, so the following notation has identical meaning:
+As explained in the intro, any number of spaces might appear around terms and operators like _=_, so the following notation has identical meaning:
 
         left-term=right-term
 
