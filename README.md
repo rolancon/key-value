@@ -4,7 +4,7 @@ Key-Value, or K-V for short, is a small data description language that standardi
 The data in a K-V file consists of one or more key-value pairs, simply called pairs from now on, where the key gives context for (describes) the value.
 The syntax of K-V for pairs is limited to the character set and [whitespace rules](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) of [Lazycode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#lazycode), the syntax of values is extended to the character set of [Minicode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#minicode).
 
-One of the syntactic principles of K-V, aligned with the 'lazyness' of Lazycode, is that operators and terms can be preceded or followed by none, one or multiple spaces, and that lines can be preceded or followed by none, one or multiple newlines, without affecting the interpretation. The superfluous spaces and newlines will be normalized away during parsing: see the [Whitespace](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) section of Lazycode.
+One of the syntactic principles of K-V, aligned with the 'lazyness' of Lazycode, is that operators and terms can be preceded or followed by none, one or multiple spaces, and that lines can be preceded or followed by none, one or multiple newlines, without affecting the interpretation. The superfluous spaces and newlines will be normalized away during parsing: see the [whitespace](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) section of Lazycode.
 
 ## Terms
 
