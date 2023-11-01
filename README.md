@@ -50,6 +50,10 @@ The value part of a pair can also be commented out separately by fronting it wit
 
     key = ;value
 
+which is identical to writing:
+
+    key =
+
 Multi-line comments start end with two consecutive semicolons **;;** on separate lines, with the comments and newlines nested in between the two pairs of semicolons:
 
     ;;
@@ -74,13 +78,13 @@ Together these pairs form a set (a set containing pairs is called a _tuple_).
 
 ## Types
 
-So far we've only seen examples of the term type, which is a special case of the string type. For atoms and leaf nodes, however,  K-V also support types which are very similar to JSON types. They are:
+So far we've only seen examples of the term type, which is a special case of the string type. For atomic values, however,  K-V also support types which are quite similar to JSON types. They are:
 - the **empty** type
 - the **boolean** type
 - the **number** type
 - the **string** type.
 
-The empty type has no syntactic encoding, but is basically denotated by an empty value:
+The empty type has no syntactic encoding, but is basically denotated by an empty value, and is basically the same as the empty string value:
 
     empty = 
 
@@ -93,7 +97,7 @@ for **false** values and
     bool = --
 
 for **true** values.
-The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the plus sign _+_.
+The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the confirming plus sign _+_ in front of a value.
 
 The number is very similar to the JSON number type. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
 
@@ -111,6 +115,8 @@ The number is very similar to the JSON number type. A number can optionally have
     num = -5.8e6
     num = 5.8e-6
     num = -5.8e-6
+
+To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e**, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
 
 The string datatype can be denotated in several different ways. In all cases whitespace before and after the actual string is not included. 
 
