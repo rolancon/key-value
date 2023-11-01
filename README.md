@@ -24,16 +24,17 @@ A pair contains of left-hand side term and a right-hand side term, connected wit
 
     left-term = right-term
 
-A set consists of two or more terms, separated with a comma **,**:
-
-    term-a, term-b
-
 The backslash **\\** newline escape can be used to break up a pair over two lines, with the value and equals sign on one line, and the value on the other:
 
     term-key = \
      term-value
 
 The indendation of the second line (with one space) is optional, but considered good practice becase it gives another visual clue that the second line is subordinate to the first line.
+
+A set consists of two or more pairs, separated with newlines:
+
+    term-a = value1
+    term-b = value2
 
 ## Comments
 
