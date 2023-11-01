@@ -26,6 +26,10 @@ A pair contains of left-hand side term and a right-hand side term, connected wit
 
     left-term = right-term
 
+As explained in the intro, any number of spaces might appear around terms and operators like_=_, so the following notation has identical meaning:
+
+        left-term=right-term
+
 The backslash **\\** newline escape can be used to break up a pair over two lines, with the value and equals sign on one line, and the value on the other:
 
     term-key = \
