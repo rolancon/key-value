@@ -2,7 +2,7 @@
 Key-Value, or K-V for short, is a small data description language that standardizes the notation of key-value pairs. K-V is extended by the [Confetti](https://github.com/rolancon/confetti) data format. The file extension for files that contain K-V data is _kv_.
 
 The data in a K-V file consists of one or more key-value pairs, simply called pairs from now on, where the key gives context for (describes) the value.
-Te syntax of K-V for pairs is limited to the character set and [whitespace rules](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) of [Lazycode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#lazycode), the syntax of values is extended to the character set of [Minicode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#minicode).
+The syntax of K-V for pairs is limited to the character set and [whitespace rules](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) of [Lazycode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#lazycode), the syntax of values is extended to the character set of [Minicode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#minicode).
 
 ## Terms
 
@@ -20,7 +20,7 @@ The naming convention for a term is as follows: a _base term_ should start with 
     
     term-a1
 
-A couplet contains of left-hand side term and a right-hand side term, connected with an equal sign **=**. E.g.:
+A pair contains of left-hand side term and a right-hand side term, connected with an equals sign **=**. E.g.:
 
     left-term = right-term
 
@@ -28,19 +28,21 @@ A set consists of two or more terms, separated with a comma **,**:
 
     term-a, term-b
 
-The backslash **\\** newline escape can be used to break up one line over two lines:
+The backslash **\\** newline escape can be used to break up a pair over two lines, with the value and equals sign on one line, and the value on the other:
 
-    term-a, \
-    term-b
+    term-key = \
+     term-value
+
+The indendation of the second line (with one space) is optional, but considered good practice becase it gives another visual clue that the second line is subordinate to the first line.
 
 ## Comments
 
-Single-line comments start with one semicolon **;** on a separate line:
+Single-line comments start with one semicolon **;** on a separate line, followed by the comment and a newline:
 
-    ; I am an atom
+    ; This is an atom
     term
 
-Multi-line comments start end with two consecutive semicolons **;;** on separate lines:
+Multi-line comments start end with two consecutive semicolons **;;** on separate lines, with the comments and newlines nested in between the two pairs of semicolons:
 
     ;;
       This is a set containing two atoms:
@@ -51,38 +53,39 @@ Multi-line comments start end with two consecutive semicolons **;;** on separate
 
 ## Key-value stores
 
-Key-value stores are directly supported with a couplet as follows, which models a key-value _pair_:
+Key-value stores are directly supported with a pair as follows, which models a key-value _pair_:
 
     key = value
 
-Multiple key-value pairs are then simply added one below the other:
+Multiple pairs are then simply added one below the other:
 
     key1 = value-a
     key2 = value-b
 
-Together these couplets form a set (a set containing couplets is called a relation).
+Together these pairs form a set (a set containing pairs is called a tuple).
 
 ## Types
 
-So far we've only seen examples of the term type, which is a special case of the string type. For atoms and leaf nodes Confetti, however, also support types which are very similar to JSON types. They are:
-- the **null** type
+So far we've only seen examples of the term type, which is a special case of the string type. For atoms and leaf nodes, however,  K-V also support types which are very similar to JSON types. They are:
+- the **empty** type
 - the **boolean** type
 - the **number** type
 - the **string** type.
 
-The null type has no syntactic encoding, but is basically denotated by an empty value:
+The empty type has no syntactic encoding, but is basically denotated by an empty value:
 
-    null = 
+    empty = 
 
 The boolean type contains two values:
 
-    bool = yes
+    bool = -
 
-for **true** values and
+for **false** values and
 
-    bool = no
+    bool = --
 
-for **false** values.
+for **true** values.
+The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the plus sign _+_.
 
 The number is very similar to the JSON number type. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
 
