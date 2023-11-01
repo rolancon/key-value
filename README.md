@@ -146,15 +146,19 @@ The Minicode character type consists of a single Minicode character (including w
 ### Empty
 
 The empty boolean type is the same as its **false** value:
+
     -
 
 The empty number type for integers is the same as the digit zero:
+
     0
 
 but can also be denoted with a minus sign:
+
     -0
 
 For reals the empty number type can also be denoted as follows:
+
     0e0
     -0e0
     0e-0
@@ -166,7 +170,7 @@ For reals the empty number type can also be denoted as follows:
     0.0e-0
     -0.0e-0
 
-The empty type for a Minicode character has no syntactic encoding, but is denoted by an empty value, and is since a string consists of Minicode characters is also the same as the empty string value:
+The empty type for a Minicode character has no syntactic encoding, but is denoted by an empty value, and since a string consists of Minicode characters is also the same as the empty string value:
 
     empty = 
 
