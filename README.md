@@ -32,7 +32,7 @@ As explained in the intro, any number of spaces might appear around terms and op
 
 Since a compound term still counts as one term, the following is not valid:
 
-    incorrect - term
+    _incorrect - term_
 
 The backslash **\\** newline escape can be used to break up a pair over two lines, with the value and equals sign on one line, and the value on the other:
 
