@@ -42,6 +42,14 @@ Single-line comments start with one semicolon **;** on a separate line, followed
     ; This is an atom
     term
 
+In case one would like to comment out the key part (and thereby the pair), just comment out the entire line:
+
+    ;key = value
+
+The value part of a pair can also be commented out separately by fronting it with a semicolon:
+
+    key = ;value
+
 Multi-line comments start end with two consecutive semicolons **;;** on separate lines, with the comments and newlines nested in between the two pairs of semicolons:
 
     ;;
@@ -62,7 +70,7 @@ Multiple pairs are then simply added one below the other:
     key1 = value-a
     key2 = value-b
 
-Together these pairs form a set (a set containing pairs is called a tuple).
+Together these pairs form a set (a set containing pairs is called a _tuple_).
 
 ## Types
 
