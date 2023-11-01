@@ -219,6 +219,10 @@ unless the backslash is doubled, which counts as an escape:
 
     str = This line is not split and the backslash is part of the string: \\
 
+or as a single character
+
+    char = \\
+
 It can be surrounded by single quotes **'**. Two single quotes constitute an empty string:
 
     empty-str = ''
@@ -260,7 +264,7 @@ The whitespace at the start and end of the string that is within the quotes is i
 
     str = ' two extra spaces '
 
-Several characters escaped with the backslash characters have special interpretation:
+Several characters escaped with the backslash character have a special interpretation:
 
     single-quote = '\''
     backslash = '\\'
@@ -269,11 +273,13 @@ Several characters escaped with the backslash characters have special interpreta
     carriage-return = '\r'
     vertical-tab = '\v'
     formfeed = '\f'
-    ascii-control-character = '\x00'
+    ascii-control-character = '\x7f'
     non-ascii-unicode-character = '\uffff'
     emoji-character = '\j10ffff'
 
-A single newline separator cannot appear in the string, unless it is positioned immediately after the opening quote and followed by a newline, in that case the first newline is removed from the string:
+These escapes only exist in quotes strings.
+
+A single newline escape cannot appear in a quoted string, unless it is positioned immediately after the opening quote and followed by a newline, in that case the first newline is removed from the string:
 
     str = '\
      the backslash and newline from the previous line are not part of this string'
@@ -282,10 +288,3 @@ and character escapes are interpreted literally in such strings (raw strings). T
 
     str = ''\
      This single quote ' and other characters like this backslash \ need no escape.''
-
-And for characters that could be interpreted as other datatypes, string interpretation can be enforced by doubling the equals sign **=**:
-
-    empty-str-not-null == 
-    str-not-bool == yes
-
-
