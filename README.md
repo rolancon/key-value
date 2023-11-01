@@ -84,9 +84,13 @@ So far we've only seen examples of the term type, which is a special case of the
 - the **number** type
 - the **string** type.
 
+### Empty
+
 The empty type has no syntactic encoding, but is denotated by an empty value, and is basically the same as the empty string value:
 
     empty = 
+
+### Boolean
 
 The boolean type contains two values:
 
@@ -98,6 +102,8 @@ for **false** values and
 
 for **true** values.
 The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the confirming plus sign _+_ in front of a value.
+
+### Number
 
 The number is very similar to the JSON number type. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
 
@@ -117,6 +123,8 @@ The number is very similar to the JSON number type. A number can optionally have
     num = -5.8e-6
 
 To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e** in exponent notation, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
+
+### String
 
 The string datatype can be denotated in several different ways. In all cases whitespace before and after the actual string is not included. 
 
