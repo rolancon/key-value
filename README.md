@@ -236,21 +236,23 @@ One single quote as value is interpreted as the single quote character itself:
 The quotes must always be used if the value contains only one or two of the other operators from K-V:
 
     comment = ;
-    string = ';'
+    character = ';'
 
     boolean-false = -
-    string = '-'
+    character = '-'
     
     boolean-true = --
     string = '--'
-    
-    comment = ;
-    string = ';'
     
     null-operator = []
     string = '[]'
 
 otherwise they will not be interpreted as strings but processed in other ways as seen above.
+
+A single equals sign has no special meaning, and is therefore interpreted as a character:
+    
+    character = =
+    character = '='
 
 In the case that quoted string is not empty several other rules apply -->
 
