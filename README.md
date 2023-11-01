@@ -175,21 +175,4 @@ And for characters that could be interpreted as other datatypes, string interpre
     empty-str-not-null == 
     str-not-bool == yes
 
-A set in Confetti is multiple values separated by commas **,**:
-
-    set = a, b, c
-
-A list in Confetti is multiple values separated by slashes **/**:
-
-    list = a/b/c
-    
-Moreover, Confetti has special notations for an empty set
-
-    empty-set = ,
-    
-and an empty list
-
-    empty-list = /
-
-which reuse the separators of sets and lists.
 
