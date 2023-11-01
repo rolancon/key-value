@@ -4,6 +4,8 @@ Key-Value, or K-V for short, is a small data description language that standardi
 The data in a K-V file consists of one or more key-value pairs, simply called pairs from now on, where the key gives context for (describes) the value.
 The syntax of K-V for pairs is limited to the character set and [whitespace rules](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) of [Lazycode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#lazycode), the syntax of values is extended to the character set of [Minicode](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#minicode).
 
+One of the syntactic principles of K-V, aligned with the 'lazyness' of Lazycode, is that operators and terms can be preceded or followed by none, one or multiple spaces, and that lines can be preceded or followed by none, one or multiple newlines, without affecting the interpretation. The superfluous spaces and newlines will be normalized away during parsing: see the [Whitespace](https://github.com/rolancon/lazycode-minicode/blob/main/README.md#whitespace) section of Lazycode.
+
 ## Terms
 
 A single _term_ is called an _atom_. 
@@ -84,9 +86,12 @@ Together these pairs form a set (a set containing pairs is called a _tuple_).
 
 So far we've only seen examples of the term type for terms:
 
+    some-term
+
 which is a special case of the string type (see below).
 
-For atomic values, however, K-V also support types which are quite similar to JSON types. They are:
+Values of key in K-V can have several other different types, which are quite similar to JSON types.
+For atomic values the supported types are:
 - the **boolean** type
 - the **number** type
 - the **Minicode character** type.
@@ -94,7 +99,7 @@ For atomic values, however, K-V also support types which are quite similar to JS
 and for each atomic type also 
 - its **empty** type
 
-Furthermore, K-V support one compound type, consisting of one or more Minicode characters:
+Furthermore, K-V supports one compound type, consisting of one or more Minicode characters:
 - the **string** type.
 
 ### Boolean
@@ -139,11 +144,11 @@ The number type can be further subdivided as follows according the principles of
 
 The Minicode character type consists of a single Minicode character (including whitespace characters space and newline), like:
 
-    1
-    A
-    a
-    =
-    +
+    char = 1
+    char = A
+    char = a
+    char = =
+    char = +
 
 ### Empty
 
@@ -178,11 +183,11 @@ The empty type for a Minicode character has no syntactic encoding, but is denote
 
 ### String
 
-The string datatype consists of one or more Minicode characters, and can be denoted in several different ways. In all cases whitespace before and after the actual string is not included. 
+The string datatype consists of one or more Lazycode or Minicode characters, and can be denoted in several different ways. In all cases whitespace before and after the actual string is not included. 
 
-It can be encoded as literal printable ASCII characters on a single line:
+It can be encoded as literal printable ASCII characters on a single line (this only uses characters from the character set of Lazycode):
   
-    str = this is 1 line with: numbers, letters and 2 symbols
+    str = this is 1 line with numbers, letters and 2 symbols.
 
 The syntax of the string datatype is extended to support the character set of Minicode, which means uppercase letters and shifted symbols from the keyboard are also allowed in a value:
 
@@ -200,6 +205,35 @@ unless the backslash is doubled, which counts as an escape:
 It can be surrounded by single quotes **'**. Two single quotes constitute an empty string:
 
     empty-str = ''
+
+which is the same as
+
+    empty-str = 
+
+As noted above in the section this is the same value as an empty character.
+
+One single quote as value is interpreted as the single quote character itself:
+
+    single-quote-char = '
+
+The quotes must always be used if the value contains only one or two of the other operators from K-V:
+
+    comment = ;
+    string = ';'
+
+    boolean-false = -
+    string = '-'
+    
+    boolean-true = --
+    string = '--'
+    
+    comment = ;
+    string = ';'
+    
+    null-operator = =
+    string = '='
+
+otherwise they will not be interpreted as strings but processed in other ways as seen above.
 
 In the case that quoted string is not empty several other rules apply -->
 
