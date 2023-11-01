@@ -63,6 +63,8 @@ Multi-line comments start end with two consecutive semicolons **;;** on separate
     ;;
     term-a, term-b
 
+Multi-line comments can also serve as documentation for what is below it.
+
 ## Key-value stores
 
 Key-value stores are directly supported with a pair as follows, which models a key-value _pair_:
@@ -78,17 +80,20 @@ Together these pairs form a set (a set containing pairs is called a _tuple_).
 
 ## Types
 
-So far we've only seen examples of the term type, which is a special case of the string type. For atomic values, however,  K-V also support types which are quite similar to JSON types. They are:
-- the **empty** type
+So far we've only seen examples of the term type for terms:
+
+which is a special case of the string type (see below).
+
+For atomic values, however, K-V also support types which are quite similar to JSON types. They are:
 - the **boolean** type
 - the **number** type
+- the **Minicode character** type.
+
+and for each atomic type also 
+- its **empty** type
+
+Furthermore, K-V support one compound type, consisting of one or more Minicode characters:
 - the **string** type.
-
-### Empty
-
-The empty type has no syntactic encoding, but is denotated by an empty value, and is basically the same as the empty string value:
-
-    empty = 
 
 ### Boolean
 
@@ -111,7 +116,7 @@ The number is very similar to the JSON number type. A number can optionally have
     num = 19
     num = -2
     num = 2.7
-    num = 3.70
+    num = 3.77
     num = -4.0
     num = 5e6
     num = -5e6
@@ -124,9 +129,50 @@ The number is very similar to the JSON number type. A number can optionally have
 
 To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e** in exponent notation, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
 
+The number type can be further subdivided as follows according the principles of a [Numerical tower](https://en.wikipedia.org/wiki/Numerical_tower):
+- the **integer** type, for types which contain only integer numbers (whole numbers optionally preceded by a minus sign)
+- the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point)
+
+### Minicode character
+
+The Minicode character type consists of a single Minicode character (including whitespace characters space and newline), like:
+
+    1
+    A
+    a
+    =
+    +
+
+### Empty
+
+The empty boolean type is the same as its **false** value:
+    -
+
+The empty number type for integers is the same as the digit zero:
+    0
+
+but can also be denoted with a minus sign:
+    -0
+
+For reals the empty number type can also be denoted as follows:
+    0e0
+    -0e0
+    0e-0
+    -0e-0
+    0.0
+    -0.0
+    0.0e0
+    -0.0e0
+    0.0e-0
+    -0.0e-0
+
+The empty type for a Minicode character has no syntactic encoding, but is denoted by an empty value, and is since a string consists of Minicode characters is also the same as the empty string value:
+
+    empty = 
+
 ### String
 
-The string datatype can be denotated in several different ways. In all cases whitespace before and after the actual string is not included. 
+The string datatype consists of one or more Minicode characters, and can be denoted in several different ways. In all cases whitespace before and after the actual string is not included. 
 
 It can be encoded as literal printable ASCII characters on a single line:
   
