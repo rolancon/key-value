@@ -58,13 +58,14 @@ which is identical to writing:
 Multi-line comments start end with two consecutive semicolons **;;** on separate lines, with the comments and newlines nested in between the two pairs of semicolons:
 
     ;;
-      This is a set containing two atoms:
-      term-a
-      term-b
+     This is a set containing two pairs:
+     term-a = value1
+     term-b = value2
     ;;
-    term-a, term-b
-
-Multi-line comments can also serve as documentation for what is below it.
+    term-a = value1
+    term-b = value2
+    
+The indentation inside the multi-line comment (with one space) is optional but considered good practice, because it visually emphasizes that this is not data. Multi-line comments can also serve as documentation for what is below it.
 
 ## Key-value stores
 
