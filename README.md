@@ -277,7 +277,9 @@ Several characters escaped with the backslash character have a special interpret
     non-ascii-unicode-character = '\uffff'
     emoji-character = '\j10ffff'
 
-These escapes only exist in quotes strings.
+These escapes only exist in quoted strings. Example:
+
+    quoted-escaped-string = 'This is a quoted string and contains two escaped characters: single quote (\') and backslash (\\).'
 
 A single newline escape cannot appear in a quoted string, unless it is positioned immediately after the opening quote and followed by a newline, in that case the first newline is removed from the string:
 
