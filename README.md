@@ -147,8 +147,14 @@ The number is very similar to the JSON number type. A number can optionally have
 To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e** in exponent notation, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
 
 The number type can be further subdivided as follows according the principles of a [Numerical tower](https://en.wikipedia.org/wiki/Numerical_tower):
-- the **integer** type, for types which contain only integer numbers (whole numbers optionally preceded by a minus sign)
-- the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point)
+- the **integer** type, for types which contain only integer numbers (whole numbers optionally preceded by a minus sign) - as in the first three examples above
+- the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point) - as in the remaining examples above
+
+A further special number type is the **fraction** type:
+    num = 3/4
+    num = -3/4
+
+which consists of two integers joined together with a slash (without spaces), optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
 
 ### Minicode character
 
@@ -290,3 +296,10 @@ and character escapes are interpreted literally in such strings (raw strings). T
 
     str = ''\
      This single quote ' and other characters like this backslash \ need no escape.''
+
+### Character range
+
+A special string type is the character range. For the Minicode characters which can be both grouped and ordered, namely digits, uppercase letters and lowercase letters, it is possible to define a value as an ordered subset of those characters by just listing the start and end character (in numerical or alphabetical ordering), without having to list all the characters separately. This is denoted with a square brackets operator block, where the character ranges are specified as start-char..end-char, and multiple ranges can be combined (without spaces). The full range of all these characters is:
+
+    character-range = [0..9A..Za..z]
+
