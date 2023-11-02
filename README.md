@@ -300,6 +300,6 @@ and character escapes are interpreted literally in such strings (raw strings). T
 
 ### Character range
 
-A special string type is the character range. For the Minicode characters which can be both grouped and ordered, namely digits, uppercase letters and lowercase letters, it is possible to define a value as an ordered subset of those characters by just listing the start and end character (in numerical or alphabetical ordering), without having to list all the characters separately. This is denoted with a square brackets operator block _[]_, where the character ranges are specified as start-char..end-char (two characters joined with a double dot _.._), and multiple ranges can be combined (without spaces). The full range of all these characters is:
+A special string type is the character range. For the Minicode characters which can be both grouped and ordered, namely digits, uppercase letters and lowercase letters, it is possible to define a value as an ordered subset of those characters by just listing the start and end character (in numerical or alphabetical ordering), without having to list all the characters separately. This is denoted with a square brackets operator block _[]_, where the character ranges are specified as start-char..end-char (two characters joined with double dots _.._), and multiple ranges can be combined (without spaces). The full range of all these characters is:
 
     character-range = [0..9A..Za..z]
