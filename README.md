@@ -151,6 +151,7 @@ The number type can be further subdivided as follows according the principles of
 - the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point) - as in the remaining examples above
 
 A further special number type is the **fraction** type:
+
     num = 3/4
     num = -3/4
 
