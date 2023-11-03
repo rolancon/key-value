@@ -180,7 +180,7 @@ In K-V this indicates the pair will be skipped; if the K-V is converted to JSON 
 
 ### String
 
-The string datatype consists of one or more Lazycode or Minicode characters, and can be denoted in several different ways. In all cases whitespace before and after the actual string is not included. 
+The string datatype consists of an ordered collection of one or more Lazycode or Minicode characters, and can be denoted in several different ways. In all cases whitespace before and after the actual string is not included. 
 
 It can be encoded as literal printable ASCII characters on a single line (this only uses characters from the character set of Lazycode):
   
@@ -311,3 +311,5 @@ The empty type for a Minicode character has no syntactic encoding, but is denote
 The empty string value is denoted with two adjacent single quotes (no characters inside the quotes):
 
     ''
+
+Since as explained a string is an ordered collection of characters, an empty string (no characters) is therefore the same as the empty character.
