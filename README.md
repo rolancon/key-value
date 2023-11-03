@@ -24,6 +24,10 @@ The naming convention for a term is as follows: a _base term_ should start with 
     
     term-a1
 
+A special convention is that a single hyphen _-_ can be used for an anonymous (unnamed) term:
+
+    -
+
 A pair contains of left-hand side term and a right-hand side term, connected with an equals sign **=**. E.g.:
 
     left-term = right-term
