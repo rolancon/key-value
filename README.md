@@ -173,6 +173,8 @@ The Minicode character type consists of a single Minicode character (including w
 
 ### Empty
 
+A term type names a certain value, and therefore whether it's an empty type depends on the type of its value. The special case of the anonymous term (_-_) qualifies as the empty metatype of the term type, since its name is empty.
+
 The empty boolean type is the same as its **false** value:
 
     -
