@@ -131,7 +131,7 @@ The single hyphen **-**, which indicates false values, recalls the minus sign in
 
 ### Number
 
-The number is very similar to the JSON number type. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
+The number is very similar to the JSON number type. It can be any number from zero (_0_) upwards. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
 
     num = 1
     num = 19
@@ -168,42 +168,9 @@ The Minicode character type consists of a single Minicode character (including w
     char = 1
     char = A
     char = a
-    char = =
+    char = _
     char = +
-
-### Empty
-
-A term type names a certain value, and therefore whether it's an empty type depends on the type of its value. The special case of the anonymous term (_-_) qualifies as the empty metatype of the term type, since its name is empty.
-
-The empty boolean type is the same as its **false** value:
-
-    -
-
-The empty number type for integers is the same as the digit zero:
-
-    0
-
-but can also be denoted with a minus sign:
-
-    -0
-
-For reals the empty number type can also be denoted as follows:
-
-    0e0
-    -0e0
-    0e-0
-    -0e-0
-    0.0
-    -0.0
-    0.0e0
-    -0.0e0
-    0.0e-0
-    -0.0e-0
-
-The empty type for a Minicode character has no syntactic encoding, but is denoted by an empty value, and since a string consists of Minicode characters is also the same as the empty string value:
-
-    empty = 
-
+    
 ### Null
 
 Unlike in JSON, there is no **null type** in K-V. However, it is still possible to emulate a **null value** with the **null operator**, a pair of square brackets: **[]**.
@@ -236,15 +203,7 @@ or as a single character
 
     char = \\
 
-It can be surrounded by single quotes **'**. Two single quotes constitute an empty string:
-
-    empty-str = ''
-
-which is the same as
-
-    empty-str = 
-
-As noted above in the section this is the same value as an empty character.
+It can be surrounded by single quotes **'**.
 
 One single quote as value is interpreted as the single quote character itself:
 
@@ -315,3 +274,40 @@ A character range that includes all uppercase letters is:
 The full range of all these characters is:
 
     character-range = [0..9A..Za..z]
+
+### Empty
+
+A term type names a certain value, and therefore whether it's an empty type depends on the type of its value. The special case of the anonymous term (_-_) qualifies as the empty metatype of the term type, since its name is empty.
+
+The empty boolean type is the same as its **false** value:
+
+    -
+
+The empty number type for integers is the same as the digit zero:
+
+    0
+
+but can also be denoted with a minus sign:
+
+    -0
+
+For reals the empty number type can also be denoted as follows:
+
+    0e0
+    -0e0
+    0e-0
+    -0e-0
+    0.0
+    -0.0
+    0.0e0
+    -0.0e0
+    0.0e-0
+    -0.0e-0
+
+The empty type for a Minicode character has no syntactic encoding, but is denoted by an empty value
+
+    empty = 
+
+The empty string value is denoted with two adjacent single quotes (no characters inside the quotes):
+
+    ''
