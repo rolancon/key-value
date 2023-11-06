@@ -156,10 +156,10 @@ The number type can be further subdivided as follows according the principles of
 
 A further special number type is the **fraction** type:
 
-    num = 3/4
-    num = -3/4
+    num = 3//4
+    num = -3//4
 
-which consists of two integers joined together with a slash (without spaces), optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
+which consists of two integers joined together with two slashes, optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
 
 ### Minicode character
 
