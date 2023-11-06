@@ -258,10 +258,33 @@ A single newline escape cannot appear in a quoted string, unless it is positione
     str = '\
      the backslash and newline from the previous line are not part of this string'
 
-and character escapes are interpreted literally in such strings (raw strings). To be able to include single quotes in the text, the number of surrounding single quotes should be one higher than the number of consecutive enclosed single quotes:
+and character escapes are interpreted literally in such strings (raw strings). To be able to include single quotes in the text, use at least three consecutive single quotes _'''_; the number of surrounding single quotes should be at least one higher than the number of enclosed consecutive single quotes:
 
-    str = ''\
-     This single quote ' and other characters like this backslash \ need no escape.''
+    str = '''\
+     This single quote ' and other characters like this backslash \ need no escape.'''
+
+### Blobs
+
+Bytes can be encoded textually using a special string notation, consisting of two single quotes _''_ enclosing pairs of whitespaces-separated hexidecimally-encoded bytes. Hexidecimal is a numerical system for base-16 (_16_ different numeric values: _0_ thru _15_), where the numbers 10 thru 15 are encoded with letters _a_ thru _f_:
+
+    a = 10
+    b = 11
+    c = 12
+    d = 13
+    e = 14
+    f = 15
+
+Each pair encodes one byte, which represents of a value between _0_ a _256_ (16 x 16). Pairs are separated with whitespace:
+
+    blob = ''0a 12 bc d3''
+
+The previous example consists of four bytes. Larger blobs can be separated per line using the backslash notation
+
+    blob = ''\
+     0a 12 bc d3
+     4e 56 f7 89''
+     
+for eight bytes.
 
 ### Character range
 
