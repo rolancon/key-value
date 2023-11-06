@@ -274,7 +274,7 @@ Bytes can be encoded textually using a special string notation, consisting of tw
     e = 14
     f = 15
 
-Each pair encodes one byte, which represents of a value between _0_ a _256_ (16 x 16). Pairs are separated with whitespace:
+Each pair encodes one byte, which represents a value between _0_ and _256_ (16 x 16). The lowest byte-string value is _00_ (0), the highest _ff_ (255). Pairs are separated with whitespace:
 
     blob = ''0a 12 bc d3''
 
