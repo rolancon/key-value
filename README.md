@@ -104,63 +104,6 @@ So far we've only seen examples of the term type for terms:
 
 which is a special case of the string type (see below).
 
-Values of key in K-V can have several other different types, which are quite similar to JSON types.
-For atomic values the supported types are:
-- the **boolean** type
-- the **number** type
-- the **Minicode character** type.
-
-and for each atomic type also 
-- its **empty** type
-
-Furthermore, K-V supports one compound type, consisting of one or more Minicode characters:
-- the **string** type.
-
-### Boolean
-
-The boolean type contains two values:
-
-    bool = -
-
-for **false** values and
-
-    bool = --
-
-for **true** values.
-The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the confirming plus sign _+_ in front of a value.
-
-### Number
-
-The number is very similar to the JSON number type. It can be any number from zero (_0_) upwards. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
-
-    num = 1
-    num = 19
-    num = -2
-    num = 2.7
-    num = 3.77
-    num = -4.0
-    num = 5e6
-    num = -5e6
-    num = 5e-6
-    num = -5e-6
-    num = 5.8e6
-    num = -5.8e6
-    num = 5.8e-6
-    num = -5.8e-6
-
-To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e** in exponent notation, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
-
-The number type can be further subdivided as follows according the principles of a [Numerical tower](https://en.wikipedia.org/wiki/Numerical_tower):
-- the **integer** type, for types which contain only integer numbers (whole numbers optionally preceded by a minus sign) - as in the first three examples above
-- the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point) - as in the remaining examples above
-
-A further special number type is the **fraction** type:
-
-    num = 3//4
-    num = -3//4
-
-which consists of two integers joined together with two slashes, optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
-
 ### Minicode character
 
 The Minicode character type consists of a single Minicode character (including whitespace characters space and newline), like:
@@ -170,13 +113,6 @@ The Minicode character type consists of a single Minicode character (including w
     char = a
     char = _
     char = +
-    
-### Null
-
-Unlike in JSON, there is no **null type** in K-V. However, it is still possible to emulate a **null value** with the **null operator**, a pair of square brackets: **[]**.
-In K-V this indicates the pair will be skipped; if the K-V is converted to JSON however, the null operator might be reinterpreted as the null value. I.e.:
-
-    skipped-or-null = []
 
 ### String
 
@@ -297,6 +233,72 @@ A character range that includes all uppercase letters is:
 The full range of all these characters is:
 
     character-range = [0..9A..Za..z]
+
+## JSON types
+
+Values of key in K-V can have several other different types, which are quite similar to JSON types.
+For atomic values the supported types are:
+- the **boolean** type
+- the **number** type
+- the **Minicode character** type.
+
+and for each atomic type also 
+- its **empty** type
+
+Furthermore, K-V supports one compound type, consisting of one or more Minicode characters:
+- the **string** type.
+    
+### Null
+
+Unlike in JSON, there is no **null type** in K-V. However, it is still possible to emulate a **null value** with the **null operator**, a pair of square brackets: **[]**.
+In K-V this indicates the pair will be skipped; if the K-V is converted to JSON however, the null operator might be reinterpreted as the null value. I.e.:
+
+    skipped-or-null = []
+
+### Boolean
+
+The boolean type contains two values:
+
+    bool = -
+
+for **false** values and
+
+    bool = --
+
+for **true** values.
+The single hyphen **-**, which indicates false values, recalls the minus sign in front of numbers, which negates the value. The double hyphens **--**, which indicates true values, recalls the double minus sign in math, whcih equals the confirming plus sign _+_ in front of a value.
+
+### Number
+
+The number is very similar to the JSON number type. It can be any number from zero (_0_) upwards. A number can optionally have a negative sign **-**, a decimal separator **.** and an exponent (lowercase **e**) with an optional negative sign **-**:
+
+    num = 1
+    num = 19
+    num = -2
+    num = 2.7
+    num = 3.77
+    num = -4.0
+    num = 5e6
+    num = -5e6
+    num = 5e-6
+    num = -5e-6
+    num = 5.8e6
+    num = -5.8e6
+    num = 5.8e-6
+    num = -5.8e-6
+
+To support interoprability with JSON, the plus sign **+** and the uppercase letter **E** are allowed as alternatives to respectively leaving out the plus sign and using the lowercase letter **e** in exponent notation, even though they are not part of the Lazycode character set; they will be normalized away during the parsing phase in favor of K-V's own preferred syntax.
+
+The number type can be further subdivided as follows according the principles of a [Numerical tower](https://en.wikipedia.org/wiki/Numerical_tower):
+- the **integer** type, for types which contain only integer numbers (whole numbers optionally preceded by a minus sign) - as in the first three examples above
+- the **real** type, for types which can also contain decimal numbers (as indicated by an exponent and/or a decimal point) - as in the remaining examples above
+
+A further special number type is the **fraction** type:
+
+    num = 3//4
+    num = -3//4
+
+which consists of two integers joined together with two slashes, optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
 
 ### Empty
 
