@@ -209,34 +209,39 @@ Bytes can be encoded textually using a special string notation, consisting of tw
     d = 13
     e = 14
     f = 15
-
-Each pair encodes one byte, which represents a value between _0_ and _256_ (16 x 16). The lowest byte-string value is _00_ (0), the highest _ff_ (255). Pairs are separated with whitespace:
+4.294.967.295
+Each pair encodes one byte, which represents a value between _0_ and _256_ (16 x 16). The lowest byte-string value is _00_ (0), the highest _ff_ (255). Pairs are separated with whitespace. A 32-bit value would be encoded as:
 
     blob = ''0a 12 bc d3''
 
-The previous example consists of four bytes. Larger blobs can be separated per line using the backslash notation
+The previous example consists of four bytes. Larger blobs can be separated per line using the backslash notation. An example of a 64-bit value:
 
     blob = ''\
      0a 12 bc d3
      4e 56 f7 89''
      
-for eight bytes.
+This contains eight bytes.
 
 ### Character range
 
 A special string operation is the character range. For the Minicode characters which can be both grouped and ordered, namely digits, uppercase letters and lowercase letters, it is possible to define a value as an ordered subset of those characters by just listing the start and end character (in numerical or alphabetical ordering), without having to list all the characters separately. This is denoted with a square brackets operator block _[]_, where the character ranges are specified as start-char..end-char (two characters joined with double dots _.._), and multiple ranges can be combined (without spaces).
 
-A character range that includes all uppercase letters is:
+A character range that includes all digits 0 thru 9 is:
 
-    uppercase = [A..Z]
+    uppercase = [0..9]
 
-The full range of all these characters is:
+A range that includes all digits and lowercase letters (the range of Lazycode) is:
+
+    uppercase = [0..9a..z]
+
+The full range of all these characters (including uppercase letters in Minicode) is:
 
     character-range = [0..9A..Za..z]
 
 ## JSON types
 
-Values of key in K-V can have several other different types, which are quite similar to JSON types.
+Values of key in K-V are all string by default (including the character, blob and empty character/string/blob type). But when exported to JSON, they can be interpreted as several different types that are quite similar to JSON types.
+
 For atomic values the supported types are:
 - the **boolean** type
 - the **number** type
@@ -247,13 +252,6 @@ and for each atomic type also
 
 Furthermore, K-V supports one compound type, consisting of one or more Minicode characters:
 - the **string** type.
-    
-### Null
-
-Unlike in JSON, there is no **null type** in K-V. However, it is still possible to emulate a **null value** with the **null operator**, a pair of square brackets: **[]**.
-In K-V this indicates the pair will be skipped; if the K-V is converted to JSON however, the null operator might be reinterpreted as the null value. I.e.:
-
-    skipped-or-null = []
 
 ### Boolean
 
@@ -298,7 +296,7 @@ A further special number type is the **fraction** type:
     num = 3//4
     num = -3//4
 
-which consists of two integers joined together with two slashes, optionally preceded by the minus sign. A fraction can be converted to an integer or a real.
+which consists of two integers joined together with two slashes, optionally preceded by the minus sign. A fraction can be converted to either an integer or a real.
 
 ### Empty
 
@@ -338,3 +336,10 @@ The empty string value is denoted with two adjacent single quotes (no characters
     ''
 
 Since as explained a string is an ordered collection of characters, an empty string (no characters) is therefore the same as the empty character.
+
+### Null
+
+Unlike in JSON, there is no **null type** in K-V. However, it is still possible to emulate a **null value** with the **null operator**, a pair of square brackets: **[]**.
+In K-V this indicates the pair will be skipped; if the K-V is converted to JSON however, the null operator might be reinterpreted as the _null_ value. I.e.:
+
+    skipped-or-null = []
